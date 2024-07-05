@@ -2,6 +2,7 @@ package com.example.demo.Note;
 
 import com.example.demo.DTOs.NoteDTO;
 import com.example.demo.DTOs.NoteDetailsDTO;
+import com.example.demo.Exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,13 +26,25 @@ public class NoteService {
     }
 
     public List<NoteDetailsDTO> getNoteDetails(Long id){
-        return noteRepository.findById(id).stream().map(note -> new NoteDetailsDTO(
-                note.getId(),
-                note.getTitle(),
-                note.getCategory(),
-                note.getDate(),
-                note.getDescription())).toList();
+        if(noteRepository.existsById(id)){
+            return noteRepository.findById(id).stream().map(note -> new NoteDetailsDTO(
+                    note.getId(),
+                    note.getTitle(),
+                    note.getCategory(),
+                    note.getDate(),
+                    note.getDescription())).toList();
 
+        }else{
+            throw new NotFoundException("This note doesn't exists: " + id);
+        }
+    }
+
+    public void deleteNote(Long id){
+        if(noteRepository.existsById(id)){
+            noteRepository.deleteById(id);
+        }else{
+            throw new NotFoundException("This note doesn't exists: " + id);
+        }
     }
 
 
