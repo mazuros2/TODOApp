@@ -30,7 +30,10 @@ public class Note {
     @NotNull
     private LocalDate date;
 
-
-
-
+    public Note(String name, String category, String description, LocalDate date) {
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.date = date;
+    }
 }
