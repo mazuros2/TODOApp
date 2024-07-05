@@ -23,7 +23,7 @@ public class AppRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Note note1 = new Note("Uni project","University","Create a project in spring boot with reactJS", LocalDate.now());
         Note note2 = new Note("Resolve 2 Leetcode problems","University","Resolve 2 leetcode problems with binary search", LocalDate.now());
-        Note note3 = new Note("Grocery shop", "Shop", "Buy water to house", LocalDate.now());
+        Note note3 = new Note("Grocery shop", "Shop", "Buy water and snacks", LocalDate.now());
 
         noteRepository.save(note1);
         noteRepository.save(note2);

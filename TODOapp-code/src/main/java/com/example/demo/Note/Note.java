@@ -22,7 +22,7 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotBlank
-    private String name;
+    private String title;
     @NotBlank
     private String category;
     @NotBlank
@@ -30,8 +30,8 @@ public class Note {
     @NotNull
     private LocalDate date;
 
-    public Note(String name, String category, String description, LocalDate date) {
-        this.name = name;
+    public Note(String title, String category, String description, LocalDate date) {
+        this.title = title;
         this.category = category;
         this.description = description;
         this.date = date;
